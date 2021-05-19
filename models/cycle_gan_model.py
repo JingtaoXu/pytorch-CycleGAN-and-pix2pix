@@ -20,14 +20,14 @@ for eye_h in range(int(h*7/20 ),int(h*9/20)):
         a[0][1][eye_h][eye_right] = 9
         a[0][2][eye_h][eye_right] = 9
 
-for lip_h in range(int(h*12/20 ),int(h*14/20)): 
-    for lip_w in range(int(w*8/20 ),int(w*12/20)):
-        a[0][0][lip_h][lip_w] = 9
-        a[0][1][lip_h][lip_w] = 9
-        a[0][2][lip_h][lip_w] = 9
+# for lip_h in range(int(h*12/20 ),int(h*14/20)): 
+#     for lip_w in range(int(w*8/20 ),int(w*12/20)):
+#         a[0][0][lip_h][lip_w] = 9
+#         a[0][1][lip_h][lip_w] = 9
+#         a[0][2][lip_h][lip_w] = 9
 weights_1 = a        
 
-#Code for GAN loss (in discriminator) JACK
+# Code for GAN loss (in discriminator) JACK
 b = torch.ones((1,1,256,256), device=cuda0)
 h = b.shape[2]
 w = b.shape[3]
@@ -37,18 +37,10 @@ for eye_h in range(int(h*7/20 ),int(h*9/20)):
     for eye_right in range(int(w*11/20),int(w*14/20)):
         b[0][0][eye_h][eye_right] = 9
         
-for lip_h in range(int(h*12/20 ),int(h*14/20)): 
-    for lip_w in range(int(w*8/20 ),int(w*12/20)):
-        b[0][0][lip_h][lip_w] = 9
+# for lip_h in range(int(h*12/20 ),int(h*14/20)): 
+#     for lip_w in range(int(w*8/20 ),int(w*12/20)):
+#         b[0][0][lip_h][lip_w] = 9
 weights_0 = b
-        
-        
-#pool1 = torch.nn.AvgPool2d(4)
-#pool2 = torch.nn.AvgPool2d(2)
-#pool3 = torch.nn.AvgPool2d(3,stride=1)
-#weights_0 = pool1(weights_0)
-#weights_0 = pool2(weights_0)
-#weights_0 = pool3(weights_0)
 
 pool1 = torch.nn.AvgPool2d(4, stride=2, padding=1)
 pool2 = torch.nn.AvgPool2d(4, stride=2, padding=1)
